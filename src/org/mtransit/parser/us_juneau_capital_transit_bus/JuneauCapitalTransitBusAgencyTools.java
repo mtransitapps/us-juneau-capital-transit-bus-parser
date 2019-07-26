@@ -188,7 +188,7 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 				1, MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN) // JUNEAU
 				.addTripSort(0, //
 						Arrays.asList(new String[] { //
-						"811669", // Willoughby Avenue and Egan Drive (Centennial Hall)
+						"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
 								"811700", // ++
 								"811813", // Auke Lake Way (University of Alaska)
 						})) //
@@ -196,7 +196,7 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 						Arrays.asList(new String[] { //
 						"811813", // Auke Lake Way (University of Alaska)
 								"811721", // ++
-								"811669", // Willoughby Avenue and Egan Drive (Centennial Hall)
+								"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
 						})) //
 				.compileBothTripSort());
 		map2.put(6L, new RouteTripSpec(6L, //
@@ -204,7 +204,7 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 				1, MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN) // JUNEAU
 				.addTripSort(0, //
 						Arrays.asList(new String[] { //
-						"811669", // Willoughby Avenue and Egan Drive (Centennial Hall)
+						"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
 								"811672", // !=
 								"811816", // Mallard Street and Crest Street (Nugget Mall Town)
 								"811697", // Mallard Street and Crest Street (Nugget Mall Valley)
@@ -219,7 +219,7 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 								"811815", // <>
 								"811816", // Mallard Street and Crest Street (Nugget Mall Town)
 								"811697", // Mallard Street and Crest Street (Nugget Mall Valley)
-								"811669", // Willoughby Avenue and Egan Drive (Centennial Hall)
+								"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
 						})) //
 				.compileBothTripSort());
 		map2.put(7L, new RouteTripSpec(7L, //
@@ -391,6 +391,18 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public int getStopId(GStop gStop) {
+		if (gStop.getStopCode().isEmpty() || //
+				!Utils.isDigitsOnly(gStop.getStopCode())) {
+			if ("2555716".equals(gStop.getStopId())) {
+				return 401; // Willoughby Avenue and Egan Drive (Centennial Hall)
+			}
+			if ("2555715".equals(gStop.getStopId())) {
+				return 402; // Willoughby Avenue and Whittier Way (ANB Hall)
+			}
+			System.out.printf("\nUnexpected stop ID for %s!\n", gStop);
+			System.exit(-1);
+			return -1;
+		}
 		return Integer.parseInt(gStop.getStopCode()); // use stop code as stop ID
 	}
 }
