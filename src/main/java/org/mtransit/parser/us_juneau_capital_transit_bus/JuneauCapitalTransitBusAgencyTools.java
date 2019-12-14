@@ -188,15 +188,15 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 				1, MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN) // JUNEAU
 				.addTripSort(0, //
 						Arrays.asList(new String[] { //
-						"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
-								"811700", // ++
-								"811813", // Auke Lake Way (University of Alaska)
+						Stops.getALL_STOPS().get("540"), // 12th Street and Egan Drive (Mountain View Senior Center)
+								Stops.getALL_STOPS().get("430"), // ++ Mendenhall Loop Road and Del Rae Road (Skate Park)
+								Stops.getALL_STOPS().get("541") // Auke Lake Way (University of Alaska)
 						})) //
 				.addTripSort(1, //
 						Arrays.asList(new String[] { //
-						"811813", // Auke Lake Way (University of Alaska)
-								"811721", // ++
-								"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
+						Stops.getALL_STOPS().get("541"), // Auke Lake Way (University of Alaska)
+								Stops.getALL_STOPS().get("451"), // ++ Glacier Highway and Sherwood Lane (DMV)
+								Stops.getALL_STOPS().get("540") // 12th Street and Egan Drive (Mountain View Senior Center)
 						})) //
 				.compileBothTripSort());
 		map2.put(6L, new RouteTripSpec(6L, //
@@ -204,22 +204,20 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 				1, MTrip.HEADSIGN_TYPE_STRING, DOWNTOWN) // JUNEAU
 				.addTripSort(0, //
 						Arrays.asList(new String[] { //
-						"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
-								"811672", // !=
-								"811816", // Mallard Street and Crest Street (Nugget Mall Town)
-								"811697", // Mallard Street and Crest Street (Nugget Mall Valley)
-								"811815", // <>
-								"811699", // ==
-								"811824", // Stephen Richards Memorial Drive and Coho Drive
+						Stops.getALL_STOPS().get("540"), // 12th Street and Egan Drive (Mountain View Senior Center) #JUNEAU
+							Stops.getALL_STOPS().get("576"), // Willoughby Avenue and Egan Drive (Centennial Hall) #JUNEAU
+							Stops.getALL_STOPS().get("200"), // == Mallard Street and Crest Street (Nugget Mall Valley) #RIVERSIDE
+							Stops.getALL_STOPS().get("542"), // <> Shell Simmons Drive at Juneau International Airport #RIVERSIDE
+							Stops.getALL_STOPS().get("429"), // == Glacier Highway at Valley Restaurant
+							Stops.getALL_STOPS().get("549"), // Stephen Richards Memorial Drive and Coho Drive =>
 						})) //
 				.addTripSort(1, //
 						Arrays.asList(new String[] { //
-						"811824", // Stephen Richards Memorial Drive and Coho Drive
-								"811724", // ==
-								"811815", // <>
-								"811816", // Mallard Street and Crest Street (Nugget Mall Town)
-								"811697", // Mallard Street and Crest Street (Nugget Mall Valley)
-								"811669", "2555716", // Willoughby Avenue and Egan Drive (Centennial Hall)
+						Stops.getALL_STOPS().get("549"), // Stephen Richards Memorial Drive and Coho Drive <=
+							Stops.getALL_STOPS().get("453"), // == Glacier Highway and Berners Avenue (Professional Plaza)
+							Stops.getALL_STOPS().get("542"), // <> Shell Simmons Drive at Juneau International Airport #RIVERSIDE
+							Stops.getALL_STOPS().get("100"), // == Mallard Street and Crest Street (Nugget Mall Town) #RIVERSIDE
+							Stops.getALL_STOPS().get("540"), // 12th Street and Egan Drive (Mountain View Senior Center) #JUNEAU
 						})) //
 				.compileBothTripSort());
 		map2.put(7L, new RouteTripSpec(7L, //
