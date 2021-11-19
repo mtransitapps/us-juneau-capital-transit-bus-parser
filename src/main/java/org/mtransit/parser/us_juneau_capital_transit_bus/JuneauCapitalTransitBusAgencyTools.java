@@ -100,18 +100,12 @@ public class JuneauCapitalTransitBusAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public int getStopId(@NotNull GStop gStop) {
-		if (gStop.getStopCode().isEmpty() || //
-				!CharUtils.isDigitsOnly(gStop.getStopCode())) {
+		final String stopCode = gStop.getStopCode();
+		if (stopCode.isEmpty() || //
+				!CharUtils.isDigitsOnly(stopCode)) {
 			//noinspection deprecation
-			final String stopId = gStop.getStopId();
-			if ("2555716".equals(stopId)) {
-				return 401; // Willoughby Avenue and Egan Drive (Centennial Hall)
-			}
-			if ("2555715".equals(stopId)) {
-				return 402; // Willoughby Avenue and Whittier Way (ANB Hall)
-			}
-			throw new MTLog.Fatal("Unexpected stop ID for %s!", gStop);
+			return Integer.parseInt(gStop.getStopId()); // fallback on stop ID
 		}
-		return Integer.parseInt(gStop.getStopCode()); // use stop code as stop ID
+		return Integer.parseInt(stopCode); // use stop code as stop ID
 	}
 }
